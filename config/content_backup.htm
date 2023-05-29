@@ -1,4 +1,39 @@
 <h1>About</h1>
 <p><a>https://w15.scrum3.repl.co</a></p>
 <p><a href="https://scrum-3.github.io/w15">https://scrum-3.github.io/w15</a></p>
-<h1>Note</h1>
+<p>在 Replit 上執行 cmsimde 動態網站與近端及中端動態系統最大的差異是:</p>
+<p>Repllit 並不能在 Shell 進行 git add 與 git commit, 必須透過 Tools 中的 Git 頁面進行新增提交.</p>
+<p>Replit 中的 Git 頁面新增與提交, 其提交身分, 及原先在近端與中端的 .gitconfig, 在 Replit 並無法自行設定, 而必須透過系統的環境變數進行設定.</p>
+<p>即 .replit 檔案中的</p>
+<p>GIT_COMMITTER_NAME = "scrum-3"</p>
+<p>GIT_COMMITTER_EMAIL = "scrum3@mde.tw"</p><h1>Note</h1>
+<p>希望採全雲端的方式建立 github pages 網站</p>
+<ol>
+<li>近端, 中端 &gt; 雲端啟用動態網站編輯網頁內容</li>
+<li>登入 gmail 帳號 -&gt; <a href="https://replit.com">https://replit.com</a></li>
+<li>在 Replit 中建立 Repl -&gt; 選用 Python template -&gt; 將專案命名為 w15</li>
+<li>在 Shell 頁面輸入 git version</li>
+<li>git init</li>
+<li>git branch -m main</li>
+<li>git submodule add https://github.com/mdecycu/cmsimde.git cmsimde</li>
+<li>利用下列指令, 將 cmsimde 目錄中的 up_dir 內全部資料複製到專案根目錄</li>
+<li>確認目前位於根目錄</li>
+<li>cp -R ./cmsimde/up_dir/* ./</li>
+<li>建立 .gitignore  將 venv, config/config, __pycache__ 等靜態網站無關的檔案讓他留在 Replit</li>
+<li>此時按下 Run -&gt; 根據 .replit 中的設定, 利用 python3 執行 main.py</li>
+<li>顯示出 Replit 內建的 Python3 環境並沒有執行 cmsimde 所需的模組</li>
+<li>pip install flask flask_cors bs4 lxml pelican markdown gevent</li>
+<li>所需模組安裝後, 就可以按下 Run 執行 main.py, 啟動後, 將網址複製到瀏覽器登入更改密碼</li>
+<li>git remote add origin <a href="https://github.com/scrum-3/w15.git">https://github.com/scrum-3/w15.git</a></li>
+<li>將能夠維護 repo 權限的 token 放到 .git/config 與 origin 對應的 url</li>
+<li>建立一個忽略 venv, config/config 以及  __Pycache__ 等目錄及無用的檔案</li>
+<li>git push -u origin main<br/><br/></li>
+</ol>
+<p>.gitignore 內容:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># Byte-compiled
+__pycache__/
+# for Replit, do not use the embedded venv Python
+venv/
+config/config
+.DS_Store</pre>
+<p></p>
